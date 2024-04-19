@@ -21,13 +21,6 @@ public class Base {
 	
 	public WebDriver FirefoxDriver_connection()
 	{
-		/*
-		 * // Especifica la ubicación del chromedriver.exe String chromedriverPath =
-		 * "./src/test/resources/chromedriver/chromedriver.exe"; // Establece la
-		 * ubicación del chromedriver System.setProperty("webdriver.chrome.driver",
-		 * chromedriverPath);
-		 *         driver = new ChromeDriver();       
-		 */
 		String geckodriverPath = "./src/test/resources/geckodriver/geckodriver.exe";
 		System.setProperty("webdriver.gecko.driver", geckodriverPath);
         System.setProperty("webdriver.http.factory", "jdk-http-client");
