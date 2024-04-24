@@ -45,6 +45,7 @@ class Sign_Up_Test {
 		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
 		String text_welcome = signup_page.getText_locator(lbl_welcome);
 		assertEquals("Welcome,", text_welcome);
+	
 	}
 
 }
