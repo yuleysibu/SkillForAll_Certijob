@@ -1,6 +1,8 @@
 package com.certijob.ska.tests;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.Duration;
 
 import org.junit.jupiter.api.AfterAll;
@@ -30,14 +32,17 @@ class Sign_Up_Test {
 
 	@AfterAll
 	void tearDownAfterClass() throws Exception {
-		//driver.quit();
+			//driver.quit();
 		}
 
 	@Test
 	void test() {
 		WebDriverWait d_wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		d_wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("styleguideheader")));
-		signup_page.Sign_up();
+		signup_page.Sign_up(driver);
+		String text_confirm = signup_page.getText_locator(text_term_cond);
+		assertEquals("Terms & Conditions", text_confirm);
+		//*[@id="marketplace-container"]/div[1]/div[2]/div/div[1]/div[1] obtener el text Welcome
 	}
 
 }
