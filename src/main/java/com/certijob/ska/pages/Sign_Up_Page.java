@@ -25,6 +25,8 @@ public class Sign_Up_Page extends Base{
 	private By tfield_password = By.id("password");
 	private By tfield_passw_conf = By.id("password-confirm");
 	private By btn_create = By.xpath("//div[@id='kc-form-buttons']/input");
+	private By checkb_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[2]/div[2]/div/label/span[1]");
+	private By btn_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[3]/div/button[1]");
 
 	
 	
@@ -49,14 +51,15 @@ public class Sign_Up_Page extends Base{
 		dwait.until(ExpectedConditions.elementToBeClickable(tfield_fname));
 		type("Carlos", tfield_fname);
 		type("Ferreira", tfield_lname);
-		type("fcjjjj@gmail.com", tfield_email);
+		type("fe_carlos@gmail.com", tfield_email);
 		type("12345Dario*", tfield_password);
 		type("12345Dario*", tfield_passw_conf);
 		click(btn_create);
 		WebDriverWait d_wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
 		d_wait2.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='modal-large']/div/div/div[1]/div"), "Terms & Conditions"));
-		By text_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[1]/div");
-		//seguir para coger el scroll los checkbox y el boton aceptar
+		js.executeScript("window.scrollBy(0, 1000)");
+		click(checkb_term_cond);
+		click(btn_term_cond);
 	}
 	
 	public String selected_cbox_country()

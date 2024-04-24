@@ -36,13 +36,15 @@ class Sign_Up_Test {
 		}
 
 	@Test
-	void test() {
+	void signUpSucceed() {
 		WebDriverWait d_wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		d_wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("styleguideheader")));
 		signup_page.Sign_up(driver);
-		String text_confirm = signup_page.getText_locator(text_term_cond);
-		assertEquals("Terms & Conditions", text_confirm);
-		//*[@id="marketplace-container"]/div[1]/div[2]/div/div[1]/div[1] obtener el text Welcome
+		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+		By lbl_welcome = By.xpath("//div[@id='marketplace-container']/div[1]/div[2]/div/div[1]/div[1]");
+		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
+		String text_welcome = signup_page.getText_locator(lbl_welcome);
+		assertEquals("Welcome,", text_welcome);
 	}
 
 }
