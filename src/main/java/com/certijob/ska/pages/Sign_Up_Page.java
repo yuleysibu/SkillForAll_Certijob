@@ -27,16 +27,19 @@ public class Sign_Up_Page extends Base{
 	private By btn_create = By.xpath("//div[@id='kc-form-buttons']/input");
 	private By checkb_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[2]/div[2]/div/label/span[1]");
 	private By btn_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[3]/div/button[1]");
+	private By lbl_welcome = By.xpath("//div[@id='marketplace-container']/div[1]/div[2]/div/div[1]/div[1]");
 
 	
 	
-	public Sign_Up_Page(WebDriver driver) {
+	/*public Sign_Up_Page(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 	
-	public void Sign_up(WebDriver driver)
+	public void Sign_up()
 	{
+		WebDriverWait d_wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		d_wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("styleguideheader")));
 		click(btn_login);
 		// Desplazar el scroll hacia abajo
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -60,6 +63,8 @@ public class Sign_Up_Page extends Base{
 		js.executeScript("window.scrollBy(0, 1000)");
 		click(checkb_term_cond);
 		click(btn_term_cond);
+		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
 	}
 	
 	public String selected_cbox_country()
@@ -82,5 +87,14 @@ public class Sign_Up_Page extends Base{
 		select_cbox_monthbirth.selectByVisibleText("May");
 		return getText(select_cbox_monthbirth.getFirstSelectedOption());
 	}
+	
+	public String welcomeMessage()
+	{
+		WebDriverWait d_waitwm = new WebDriverWait(driver, Duration.ofSeconds(20));
+		d_waitwm.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
+		String text_welcome = getText_locator(lbl_welcome);
+		return text_welcome;
+	}
+	
 
 }
