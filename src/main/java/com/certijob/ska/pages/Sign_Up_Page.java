@@ -4,7 +4,6 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +12,7 @@ import com.certijob.ska.base.Base;
 
 public class Sign_Up_Page extends Base{
 	
-	private By btn_login = By.xpath("(//div[@class='headerMenuItem--C2-Ux'])[4]");
+	private By btn_login = By.xpath("(//div[@class='headerMenuItem--C2-Ux'])[3]");
 	private By link_sign_up = By.xpath("//div[@id='kc-registration']/span/a");
 	private By cbox_country = By.id("selectCountry");
 	private By cbox_yearbirth = By.id("yearOfBirth");
@@ -27,7 +26,7 @@ public class Sign_Up_Page extends Base{
 	private By btn_create = By.xpath("//div[@id='kc-form-buttons']/input");
 	private By checkb_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[2]/div[2]/div/label/span[1]");
 	private By btn_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[3]/div/button[1]");
-	private By lbl_welcome = By.xpath("//div[@id='marketplace-container']/div[1]/div[2]/div/div[1]/div[1]");
+	private By lbl_welcome = By.xpath("//div[@class='text-weight-400 text-size-20 text-white']");
 
 	
 	
@@ -54,7 +53,7 @@ public class Sign_Up_Page extends Base{
 		dwait.until(ExpectedConditions.elementToBeClickable(tfield_fname));
 		type("Carlos", tfield_fname);
 		type("Ferreira", tfield_lname);
-		type("fe_carlos@gmail.com", tfield_email);
+		type("ferr_carlos@gmail.com", tfield_email);
 		type("12345Dario*", tfield_password);
 		type("12345Dario*", tfield_passw_conf);
 		click(btn_create);
