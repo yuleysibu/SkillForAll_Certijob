@@ -1,18 +1,13 @@
 package com.certijob.ska.tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.Duration;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.certijob.ska.pages.Login_Page;
 
@@ -25,19 +20,19 @@ class Login_Test {
 	@BeforeAll
 	void setUpBeforeClass() throws Exception {
 		login_page = new Login_Page();
-		driver = login_page.ChromeDriver_connection();
 	}
 
 	@BeforeEach
 	void doBeforeEachTest() throws Exception
 	{
+		driver = login_page.ChromeDriver_connection();
 		driver.manage().window().maximize();
 		login_page.visit("https://skillsforall.com");
 	}
 	
 	@AfterAll
 	void tearDownAfterClass() throws Exception {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
@@ -55,11 +50,11 @@ class Login_Test {
 		assertEquals("Invalid username or password.", error_mess_passw);
 	}
 
-	@Test
+	@Test 
 	void settingEmailInvalid()
 	{
 		login_page.emailInvalid();
 		String error_mess_email = login_page.invalidEmailAndPasswordMessage();
-		assertEquals("Invalid username or password.", error_mess_email);
+		assertEquals("Invalid username or email.", error_mess_email);
 	}
 }

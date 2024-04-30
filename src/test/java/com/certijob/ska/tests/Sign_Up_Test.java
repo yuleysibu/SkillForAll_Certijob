@@ -33,7 +33,7 @@ class Sign_Up_Test {
 
 	@AfterAll
 	void tearDownAfterClass() throws Exception {
-			//driver.quit();
+			driver.quit();
 		}
 
 	@Test
