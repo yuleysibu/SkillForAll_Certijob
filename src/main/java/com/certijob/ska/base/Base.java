@@ -12,12 +12,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Base {
 
-	private WebDriver driver;
+	protected WebDriver driver;
 	
-	public Base(WebDriver driver) 
+/*	public Base(WebDriver driver) 
 	{
 		this.driver = driver;	
-	}
+	}*/
 	
 	public WebDriver FirefoxDriver_connection()
 	{

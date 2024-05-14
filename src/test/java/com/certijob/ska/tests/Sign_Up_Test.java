@@ -3,16 +3,12 @@ package com.certijob.ska.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.Duration;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.certijob.ska.pages.Sign_Up_Page;
 
@@ -24,28 +20,27 @@ class Sign_Up_Test {
 
 	@BeforeAll
 	void setUpBeforeClass() throws Exception {
-		signup_page = new Sign_Up_Page(driver);
+		signup_page = new Sign_Up_Page();
 		driver=signup_page.ChromeDriver_connection();
+	}
+	
+	@BeforeEach
+	void doBeforeEachTest()
+	{
 		driver.manage().window().maximize();
 		signup_page.visit("https://skillsforall.com");
 	}
 
 	@AfterAll
 	void tearDownAfterClass() throws Exception {
-			//driver.quit();
+			driver.quit();
 		}
 
 	@Test
-	void signUpSucceed() {
-		WebDriverWait d_wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		d_wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("styleguideheader")));
-		signup_page.Sign_up(driver);
-		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-		By lbl_welcome = By.xpath("//div[@id='marketplace-container']/div[1]/div[2]/div/div[1]/div[1]");
-		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
-		String text_welcome = signup_page.getText_locator(lbl_welcome);
-		assertEquals("Welcome,", text_welcome);
-	
+	void signUpSucceed() {	
+		signup_page.Sign_up();
+		String mess_welcome = signup_page.welcomeMessage();
+		assertEquals("Welcome,", mess_welcome);
 	}
 
 }
