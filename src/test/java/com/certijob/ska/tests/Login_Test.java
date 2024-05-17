@@ -3,6 +3,7 @@ package com.certijob.ska.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,12 +27,14 @@ class Login_Test {
 	void doBeforeEachTest() throws Exception
 	{
 		driver = login_page.ChromeDriver_connection();
+		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		login_page.visit("https://skillsforall.com");
 	}
 	
-	@AfterAll
-	void tearDownAfterClass() throws Exception {
+	@AfterEach
+	void doBeAfterEachTest() throws Exception
+	{
 		driver.quit();
 	}
 
