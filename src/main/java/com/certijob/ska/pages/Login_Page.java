@@ -1,6 +1,7 @@
 package com.certijob.ska.pages;
 
 import java.time.Duration;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -85,6 +86,7 @@ public class Login_Page extends Base{
 		click(btn_loginUser);
 		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
 		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
+		
 	}
 	
 	public String logout()
@@ -112,6 +114,22 @@ public class Login_Page extends Base{
 			WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
 			d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
 			return true;
+		}
+	}
+	
+	public void closeWindow()
+	{
+		String parentwindowHandle = driver.getWindowHandle();
+		Set<String> allWindowsHandles = driver.getWindowHandles();
+		for(String windowHandle: allWindowsHandles)
+		{
+			System.out.println("cerre");
+			if(!windowHandle.equals(parentwindowHandle))
+			{
+				driver.switchTo().window(windowHandle);
+				driver.close();
+				System.out.println("cerre vetana");
+			}
 		}
 	}
 
