@@ -3,6 +3,7 @@ package com.certijob.ska.pages;
 import java.time.Duration;
 import java.util.Set;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,6 +22,7 @@ public class Login_Page extends Base{
 	private By check_rembUser = By.id("rememberMe");
 	private By btn_avatar = By.xpath("//img[@src='/sfa-assets/images/svg/user.svg']");
 	private By btn_log_out = By.id("logoutButton");
+	
 /*	public Login_Page(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -85,9 +87,9 @@ public class Login_Page extends Base{
 		type("12345Dario*", tfield_passw);;
 		click(btn_loginUser);
 		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
-		
+		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));		
 	}
+	
 	
 	public String logout()
 	{
@@ -120,8 +122,13 @@ public class Login_Page extends Base{
 	public void closeWindow()
 	{
 		String parentwindowHandle = driver.getWindowHandle();
+		// Wait for the new window or tab to open
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+
 		Set<String> allWindowsHandles = driver.getWindowHandles();
-		for(String windowHandle: allWindowsHandles)
+		System.out.println(allWindowsHandles.size());
+		/*for(String windowHandle: allWindowsHandles)
 		{
 			System.out.println("cerre");
 			if(!windowHandle.equals(parentwindowHandle))
@@ -130,7 +137,7 @@ public class Login_Page extends Base{
 				driver.close();
 				System.out.println("cerre vetana");
 			}
-		}
+		}*/
 	}
 
 }
