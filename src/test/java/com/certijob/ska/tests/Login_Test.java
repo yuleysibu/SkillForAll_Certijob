@@ -3,16 +3,11 @@ package com.certijob.ska.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Set;
-
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import com.certijob.ska.pages.Login_Page;
@@ -40,17 +35,17 @@ class Login_Test {
 	@AfterEach
 	void doBeAfterEachTest() throws Exception
 	{
-		//driver.quit();
+		driver.quit();
 	}
 
-	@Disabled //@Test 
+	@Test 
 	void loginUserSucceed() {
 		login_page.loginUser();
 		String text_welcome = login_page.welcomeMessage();
 		assertEquals("Welcome,", text_welcome);
 	}
 	
-	@Disabled //@Test 
+	@Test 
 	void settingEmailValidAndPasswordInvalid()
 	{
 		login_page.passwInvalid();
@@ -58,7 +53,7 @@ class Login_Test {
 		assertEquals("Invalid username or password.", error_mess_passw);
 	}
 
-	@Disabled //@Test 
+	@Test 
 	void settingEmailInvalid()
 	{
 		login_page.emailInvalid();
@@ -71,14 +66,9 @@ class Login_Test {
 	{
 		login_page.loginWithRememberUser();;
 		String text_welcome = login_page.welcomeMessage();
-		assertEquals("Welcome,", text_welcome);
-		login_page.closeWindow();
-		System.out.println("cerre vetanas final");
-		
-		/*
-		 * String btn_name = login_page.logout(); assertEquals("Login", btn_name);
-		 * assertTrue(login_page.loginWithoutRememberUser(),
-		 * "The required password was not saved correctly.");
-		 */
+		assertEquals("Welcome,", text_welcome);		
+		String btn_name = login_page.logout(); assertEquals("Login", btn_name);
+		assertTrue(login_page.loginWithoutRememberUser(),"The required password was not saved correctly.");
+		 
 	}
 }

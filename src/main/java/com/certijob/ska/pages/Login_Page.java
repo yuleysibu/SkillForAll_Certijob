@@ -1,9 +1,7 @@
 package com.certijob.ska.pages;
 
 import java.time.Duration;
-import java.util.Set;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -117,29 +115,6 @@ public class Login_Page extends Base{
 			d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
 			return true;
 		}
-	}
-	
-	public void closeWindow()
-	{
-		String iFrameSize = driver.findElements(By.tagName("iframe")).get(0).getText();
-		//String nn=driver.switchTo().frame(0).getTitle();
-		String parentwindowHandle = driver.getWindowHandle();
-		// Wait for the new window or tab to open
-		/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-
-		Set<String> allWindowsHandles = driver.getWindowHandles();
-		System.out.println(allWindowsHandles.size());
-		for(String windowHandle: allWindowsHandles)
-		{
-			System.out.println("cerre");
-			if(!windowHandle.equals(parentwindowHandle))
-			{
-				driver.switchTo().window(windowHandle);
-				driver.close();
-				System.out.println("cerre vetana");
-			}
-		}*/
 	}
 
 }
