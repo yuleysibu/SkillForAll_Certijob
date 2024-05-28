@@ -12,7 +12,7 @@ import com.certijob.ska.base.Base;
 
 public class Sign_Up_Page extends Base{
 	
-	private By btn_login = By.xpath("(//div[@class='headerMenuItem--C2-Ux'])[3]");
+	private By btn_login = By.xpath("//div[@class='headerMenuItem--C2-Ux']//button[text()='Login']");
 	private By link_sign_up = By.xpath("//div[@id='kc-registration']/span/a");
 	private By cbox_country = By.id("selectCountry");
 	private By cbox_yearbirth = By.id("yearOfBirth");

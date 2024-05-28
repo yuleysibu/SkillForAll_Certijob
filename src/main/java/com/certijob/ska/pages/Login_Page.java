@@ -13,7 +13,7 @@ import com.certijob.ska.base.Base;
 public class Login_Page extends Base{
 
 	private By header_menu = By.id("styleguideheader");
-	private By btn_login = By.xpath("(//div[@class='headerMenuItem--C2-Ux'])[3]");
+	private By btn_login = By.xpath("//div[@class='headerMenuItem--C2-Ux']//button[text()='Login']");
 	private By tfield_email = By.id("username");
 	private By btn_loginUser = By.id("kc-login");
 	private By tfield_passw = By.id("password");
@@ -121,14 +121,16 @@ public class Login_Page extends Base{
 	
 	public void closeWindow()
 	{
+		String iFrameSize = driver.findElements(By.tagName("iframe")).get(0).getText();
+		//String nn=driver.switchTo().frame(0).getTitle();
 		String parentwindowHandle = driver.getWindowHandle();
 		// Wait for the new window or tab to open
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		/*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.numberOfWindowsToBe(2));
 
 		Set<String> allWindowsHandles = driver.getWindowHandles();
 		System.out.println(allWindowsHandles.size());
-		/*for(String windowHandle: allWindowsHandles)
+		for(String windowHandle: allWindowsHandles)
 		{
 			System.out.println("cerre");
 			if(!windowHandle.equals(parentwindowHandle))
