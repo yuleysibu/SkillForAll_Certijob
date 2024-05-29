@@ -72,7 +72,7 @@ class Login_Test {
 		login_page.loginWithRememberUser();;
 		String text_welcome = login_page.welcomeMessage();
 		assertEquals("Welcome,", text_welcome);
-		login_page.closeWindow();
+		//login_page.closeWindow();
 		System.out.println("cerre vetanas final");
 		
 		/*

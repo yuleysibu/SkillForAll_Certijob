@@ -1,6 +1,8 @@
 package com.certijob.ska.base;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
@@ -35,7 +37,21 @@ public class Base {
 		System.setProperty("webdriver.chrome.driver",chromedriverPath);
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         ChromeOptions options = new ChromeOptions(); 
-        options. setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
+        options.addArguments("--disable-notifications");
+        
+        
+        //options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
+        //-----------------------------------------
+        /*options.addArguments("chrome.switches","--disable-extensions"); 
+        options.addArguments("--disable-save-password");
+        options.addArguments("disable-infobars");*/
+        //--------------------------------
+		/*
+		 * Map<String, Object> prefs=new HashMap<String,Object>();
+		 * prefs.put("profile.default_content_setting_values.notifications", 2);
+		 * //1-Allow, 2-Block, 0-default options.setExperimentalOption("prefs",prefs);
+		 */
+        
         driver = new ChromeDriver(options);
         return driver;            
 	}
