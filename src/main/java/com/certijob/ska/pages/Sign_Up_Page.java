@@ -27,6 +27,7 @@ public class Sign_Up_Page extends Base{
 	private By checkb_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[2]/div[2]/div/label/span[1]");
 	private By btn_term_cond = By.xpath("//div[@id='modal-large']/div/div/div[3]/div/button[1]");
 	private By lbl_welcome = By.xpath("//div[@class='text-weight-400 text-size-20 text-white']");
+	private By btn_alert_dialog = By.xpath("//div[@id='onetrust-close-btn-container']//button");
 
 	
 	
@@ -64,6 +65,7 @@ public class Sign_Up_Page extends Base{
 		click(btn_term_cond);
 		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
 		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
+		click(btn_alert_dialog);
 	}
 	
 	public String selected_cbox_country()

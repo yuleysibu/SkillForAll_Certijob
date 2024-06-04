@@ -20,6 +20,7 @@ public class Login_Page extends Base{
 	private By check_rembUser = By.id("rememberMe");
 	private By btn_avatar = By.xpath("//img[@src='/sfa-assets/images/svg/user.svg']");
 	private By btn_log_out = By.id("logoutButton");
+	private By btn_alert_dialog = By.xpath("//div[@id='onetrust-close-btn-container']//button");
 	
 /*	public Login_Page(WebDriver driver) {
 		super(driver);
@@ -37,6 +38,7 @@ public class Login_Page extends Base{
 		click(btn_loginUser);
 		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
 		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
+		click(btn_alert_dialog);
 	}
 	
 	public String welcomeMessage()
@@ -86,6 +88,7 @@ public class Login_Page extends Base{
 		click(btn_loginUser);
 		WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
 		d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));		
+		click(btn_alert_dialog);
 	}
 	
 	
@@ -113,8 +116,8 @@ public class Login_Page extends Base{
 			click(btn_loginUser);
 			WebDriverWait d_wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
 			d_wait1.until(ExpectedConditions.textToBePresentInElementLocated(lbl_welcome, "Welcome"));
+			click(btn_alert_dialog);
 			return true;
 		}
 	}
-
 }

@@ -53,7 +53,7 @@ class Login_Test {
 		assertEquals("Invalid username or password.", error_mess_passw);
 	}
 
-	@Test 
+	@Test  
 	void settingEmailInvalid()
 	{
 		login_page.emailInvalid();
@@ -61,14 +61,13 @@ class Login_Test {
 		assertEquals("Invalid username or email.", error_mess_email);
 	}
 	
-	@Test
+	@Test 
 	void rememberUser()
 	{
 		login_page.loginWithRememberUser();;
 		String text_welcome = login_page.welcomeMessage();
 		assertEquals("Welcome,", text_welcome);		
 		String btn_name = login_page.logout(); assertEquals("Login", btn_name);
-		assertTrue(login_page.loginWithoutRememberUser(),"The required password was not saved correctly.");
-		 
+		assertTrue(login_page.loginWithoutRememberUser(),"The required password was not saved correctly."); 
 	}
 }

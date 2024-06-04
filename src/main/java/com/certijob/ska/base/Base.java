@@ -34,8 +34,9 @@ public class Base {
 		// Establece la ubicación del chromedriver 
 		System.setProperty("webdriver.chrome.driver",chromedriverPath);
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        ChromeOptions options = new ChromeOptions(); 
-        options. setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); 
+        ChromeOptions options = new ChromeOptions();
+        //Eliimar las notificaciones
+        options.addArguments("--disable-notifications");        
         driver = new ChromeDriver(options);
         return driver;            
 	}
